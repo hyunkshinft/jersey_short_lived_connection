@@ -18,7 +18,7 @@ import java.time.Instant;
 public class Main {
 
    public static void main(String[] args) throws KeyManagementException, NoSuchAlgorithmException {
-        String url = args.length > 0 ? args[0] :"http://ec2-54-160-4-184.compute-1.amazonaws.com:89/example.json";
+        String url = args.length > 0 ? args[0] :"http://ec2-54-160-4-184.compute-1.amazonaws.com:89/fail.json";
         System.out.println("success\tfail - " + url);
         int success = 0, failure = 0;
         Instant start = Instant.now(), logged = Instant.now();
@@ -56,6 +56,7 @@ public class Main {
                     resp.readEntity(new GenericType<EmptyBean>() {});
                     success++;
                 }
+                resp.close();
             }
             else {
                 failure++;
